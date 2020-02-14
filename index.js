@@ -22,7 +22,7 @@ inquirer
         {
             type: "list",
             message: "What kind of liscence are you using?",
-            name: "description",
+            name: "liscence",
             choices: [  
                 "MIT",
                 "Apache 2.0",
@@ -33,24 +33,24 @@ inquirer
             ]
         }, {
             type: "input",
-            message: "Please provide a description of your project",
-            name: "description"
+            message: "What command should be run to install dependencies?",
+            name: "install_command"
 
         },
         {
             type: "input",
-            message: "Please provide a description of your project",
-            name: "description"
+            message: "What command should be run to run tests?",
+            name: "tests_command"
         },
         {
             type: "input",
-            message: "Please provide a description of your project",
-            name: "description"
+            message: "What does this user need to know about using the repo?",
+            name: "repo_info"
         },
         {
             type: "input",
-            message: "Please provide a description of your project",
-            name: "description"
+            message: "What does this user need to know about contributing to the repo?",
+            name: "repo_contribution"
         }
     ])
     .then(function (promptAnswers) {
