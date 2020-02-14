@@ -23,7 +23,7 @@ inquirer
             type: "list",
             message: "What kind of liscence are you using?",
             name: "liscence",
-            choices: [  
+            choices: [
                 "MIT",
                 "Apache 2.0",
                 "GPL 3.0",
@@ -62,17 +62,24 @@ inquirer
             // add backticks to work with es6+ values 
             let readmeContent = `
                 # ${promptAnswers.project_title} 
-               ${promptAnswers.description}
-               *
+               ### ${promptAnswers.description}
+               *${promptAnswers.liscence}
+               *${promptAnswers.install_command}
+               *${promptAnswers.tests_command}
+               *${promptAnswers.repo_info}
+               *${promptAnswers.repo_contribution}
             `
-
         })
         // 
-        function writeToFile(fileName, data) {
+        fs.writeFile("README.md", readmeContent, function () {
+            if (err) {
+                return console.log(err);
+              }
+            
+              console.log("Success!");
+            
 
-
-
-        }
+        });
     });
 
 function init() {
@@ -81,12 +88,3 @@ function init() {
 
 init();
 
-// fs.writeFile("README2.md", process.argv[2], function (err) {
-
-//     if (err) {
-//         return console.log(err);
-//     }
-
-//     console.log("Success!");
-
-// });
