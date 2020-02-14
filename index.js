@@ -1,21 +1,51 @@
-const questions = [
-
-];
-let inquirer = require("inquirer");
-let fs = require('fs');
-let axios = require('axios');
+const inquirer = require("inquirer");
+const fs = require('fs');
+const axios = require('axios');
 
 inquirer
     .prompt([
         {
-            type: "input",
-            message: "What is your GitHub user name?", // need to retived bio pic and email
+            type: "input", // put commas after every one
+            message: "What is your GitHub user name?", // need to retive bio pic and email
             name: "username"
         },
         {
             type: "input",
             message: "What is your project called?",
-            name: "project title"
+            name: "project_title"
+        },
+        {
+            type: "input",
+            message: "Please provide a description of your project",
+            name: "description"
+        },
+        {
+            type: "list",
+            message: "What kind of liscence are you using?",
+            name: "description",
+            choices: [  
+                "MIT",
+                "Apache 2.0",
+                "GPL 3.0",
+                "BSD 3",
+                "None"
+
+            ]
+        }, {
+            type: "input",
+            message: "Please provide a description of your project",
+            name: "description"
+
+        },
+        {
+            type: "input",
+            message: "Please provide a description of your project",
+            name: "description"
+        },
+        {
+            type: "input",
+            message: "Please provide a description of your project",
+            name: "description"
         },
         {
             type: "input",
@@ -23,24 +53,22 @@ inquirer
             name: "description"
         }
     ])
-    .then(function (response) {
-        axios.get(`https://api.github.com/users/${response.username}`).then(function (resp) {
+    .then(function (promptAnswers) {
+        // axios call to github api
+        axios.get(`https://api.github.com/users/${promptAnswers.username}`).then(function (resp) {
             console.log(resp.data)
+            // create a string that consists of all the readme's content
+            // use a guide on markdown syntax to format everything properly
+            // add backticks to work with es6+ values 
+            let readmeContent = `
+                # ${promptAnswers.project_title} 
+               ${promptAnswers.description}
+               *
+            `
 
-            
         })
+        // 
         function writeToFile(fileName, data) {
-            // let fileName = data.name.toLowerCase().split(' ').join('') + ".json";
-
-            // fs.writeFile(filNname, JSON.stringify(data, null, '\t'), function (err) {
-
-            //     if (err) {
-            //         return console.log(err);
-            //     }
-
-            //     console.log("Success!");
-
-            // });
 
 
 
