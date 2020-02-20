@@ -60,13 +60,14 @@ inquirer
             // use a guide on markdown syntax to format everything properly
             // add backticks to work with es6+ values 
             let readmeContent = `
-            #${promptAnswers.project_title} 
-            ###${promptAnswers.description}
-            *${promptAnswers.liscence}
-            *${promptAnswers.install_command}
-            *${promptAnswers.tests_command}
-            *${promptAnswers.repo_info}
-            *${promptAnswers.repo_contribution}
+! [GitHub profile image](${resp.data.avatar_url})
+# ${promptAnswers.project_title} 
+### ${promptAnswers.description}
+* ${promptAnswers.liscence}
+* ${promptAnswers.install_command}
+* ${promptAnswers.tests_command}
+* ${promptAnswers.repo_info}
+* ${promptAnswers.repo_contribution}
             `
             fs.writeFile("README.md", readmeContent, function (err) { // need to get this to push to github
                 if (err) {
