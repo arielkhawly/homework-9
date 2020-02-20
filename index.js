@@ -60,6 +60,7 @@ inquirer
             // use a guide on markdown syntax to format everything properly
             // add backticks to work with es6+ values 
             let readmeContent = `
+! [Version](https://img.shields.io/badge/VERSION-1.0.0-BRIGHTGREEN)
 ! [GitHub profile image](${resp.data.avatar_url})
 # ${promptAnswers.project_title} 
 ### ${promptAnswers.description}
