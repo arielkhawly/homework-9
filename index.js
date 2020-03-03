@@ -54,14 +54,15 @@ inquirer
     ])
     .then(function (promptAnswers) {
         // axios call to github api
-        axios.get(`https://api.github.com/users/${promptAnswers.username}`).then(function (resp) {
+        axios.get(`https://api.github.com/users/${promptAnswers.username}?access_token=3a36c1f330e61ea7d9770f46e8b577d0510a414d`).then(function (resp) {
             console.log(resp.data)
             // create a string that consists of all the readme's content
             // use a guide on markdown syntax to format everything properly
             // add backticks to work with es6+ values 
             let readmeContent = `
-! [Version](https://img.shields.io/badge/VERSION-1.0.0-BRIGHTGREEN)
-! [GitHub profile image](${resp.data.avatar_url})
+![Version](https://img.shields.io/badge/VERSION-1.0.0-BRIGHTGREEN)
+![GitHub profile image](${resp.data.avatar_url})
+###${resp.data.email}
 # ${promptAnswers.project_title} 
 ### ${promptAnswers.description}
 * ${promptAnswers.liscence}
